@@ -1,0 +1,12 @@
+[package]
+name = "tis_ui"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+wgpu = "30"
+winit = "0.30"
+egui = "0.36"
+egui-wgpu = { version = "0.36", features = ["winit"] }
+egui-winit = "0.36"
+log = "0.4"

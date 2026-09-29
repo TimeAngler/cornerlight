@@ -1,0 +1,15 @@
+[package]
+name = "tis_renderer"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+anyhow.workspace = true
+bytemuck = { version = "1", features = ["derive"] }
+image.workspace = true
+wgpu.workspace = true
+
+
+raw-window-handle = "0.6"
+glam = { version = "0.33", features = ["bytemuck"] }
+log = "0.4.34"

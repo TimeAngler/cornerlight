@@ -1,0 +1,52 @@
+[workspace]
+members = ["crates/*", "."]
+resolver = "3"
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+
+[workspace.dependencies]
+anyhow = "1"
+bytemuck = { version = "1", features = ["derive"] }
+pollster = "1"
+env_logger = "0.11"
+log = "0.4"
+winit = "0.30"
+wgpu = "30"
+image = "0.25"
+
+
+
+[package]
+name = "cornerlight"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+#内部依赖
+tis_renderer = { path = "crates/tis_renderer"}
+tis_ui = { path = "crates/tis_ui"}
+
+#外部依赖
+anyhow.workspace = true
+env_logger.workspace = true
+pollster.workspace = true
+winit.workspace = true
+log.workspace = true
+image.workspace = true
+fastrand = "2"
+
+
+[profile.dev]
+opt-level = 1
+
+[profile.dev.package."*"]
+opt-level = 3
+
+[profile.release]
+opt-level = "z"      # 优化体积
+lto = true           # 链接时优化
+codegen-units = 1    # 更激进的优化
+strip = true         # 去除符号
+panic = "abort"      # 减小体积
